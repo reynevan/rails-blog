@@ -3,5 +3,5 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :article
   validates :content, presence: true
-  validates :content, length: {minimum: 6}
+  validates :content, length: 5..255
 end

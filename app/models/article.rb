@@ -4,5 +4,5 @@ class Article < ActiveRecord::Base
   has_many :comments
   validates :title, :content, presence: true
   validates :title, length: 5..32
-  validates :content, length: {minimum: 5}
+  validates :content, length: 5..255
 end
