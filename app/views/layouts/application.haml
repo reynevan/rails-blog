@@ -8,23 +8,25 @@
     =csrf_meta_tags 
   %body
     .menu
-      = link_to 'Strona glowna', articles_path  
-      | 
-      = link_to 'Dodaj post', new_article_path  
+      #logo
+        %h2 Reynevan-blog
+      = link_to 'Main', articles_path
+      -if user_signed_in? 
+        | 
+        = link_to 'Add a post', new_article_path  
       |
       - if current_user 
         = current_user.email  
         |
-        = link_to 'Wyloguj', destroy_user_session_path,method: :delete 
+        = link_to 'Logout', destroy_user_session_path,method: :delete 
       - else 
-        = link_to 'Rejestracja', new_user_registration_path  
+        = link_to 'Sign up', new_user_registration_path  
         |
-        = link_to 'Zaloguj', new_user_session_path 
-    #flash
-      -if notice 
-        .notice.flash= notice 
-      -elsif alert 
-        .alert.flash= alert
+        = link_to 'Sign in', new_user_session_path 
+    = render 'layouts/partials/flash'
     .container
-      =yield
+      .row
+        .col-md-10.col-md-offset-1
+          #info
+          =yield
     

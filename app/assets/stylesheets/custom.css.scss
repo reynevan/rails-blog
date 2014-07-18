@@ -1,0 +1,27 @@
+@import "bootstrap";
+body {
+	background-image: image-url("/assets/shattered.png");
+}
+.article {
+	border: 1px solid #abc;
+	margin-bottom: 10px;
+	background-color: rgba(232,232,255, 0.4);
+	padding: 5px;
+}
+.menu {
+	background-color: #222;
+	border-bottom: 3px solid #09c;
+	padding:5px 0 10px 10px;
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100%;
+	z-index: 9999;
+	color: #abc;
+	a{
+	color: #09c;
+	}
+}
+.container {
+	margin-top: 150px;
+}

@@ -3,23 +3,21 @@
   = render @article
   .comments
     -if @comments.count == 0
-      Brak komentarzy
+      No comments
     -else
-      Komentarze:
-      
-      - @comments.each do |c|
-        .comment
-          =c.user.email 
-          \: 
-          = c.content
-          %br
+      Comments:
+      = render @comments
+        
   %br
   -if user_signed_in?
-    = form_for @comment do |f|
-      = f.label 'Skomentuj'
-      = f.text_area(:content, size: '90x10' )
-      %br
+    = form_for @comment, class: 'form-horizontal', remote: true do |f|
+      .form-group
+        = f.label 'Leave a comment:', class: 'col-sm-2 control-label'
+        .col-sm-10
+          = f.text_area(:content, class: 'form-control', rows: '3' )
       = f.hidden_field :article_id, :value=>@article.id
-      = f.submit
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit 'Submit', :class=>'btn btn-primary'
   -else
-    Zaloguj sie, zeby skomentowac
+    Log in to comment

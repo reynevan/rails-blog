@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     else
       redirect_to article_path(@comment.article), alert: 'Blad przy dodawaniu komentarza'
     end
+    
   end
 
 

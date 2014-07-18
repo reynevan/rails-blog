@@ -1,16 +1,16 @@
-= form_for @article do |f| 
+= form_for @article, class: 'form-horizontal' do |f| 
   -@article.errors.full_messages.each do |msg| 
     .error=msg
   
-
-  = f.label :title 
-  %br
-  = f.text_field :title 
-  %br
-
-  = f.label :content 
-  %br
-  = f.text_area(:content, size: '50x10' ) 
-  %br
-  = f.submit 'Submit', :class=>'btn btn-primary'
+  .form-group
+    = f.label :title , class: 'col-sm-2 control-label' 
+    .col-sm-10
+      = f.text_field :title, :class => 'form-control'
+  .form-group
+    = f.label :content, :class =>'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area(:content, class: 'form-control', rows: '3' ) 
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit 'Submit', :class=>'btn btn-primary'
 
