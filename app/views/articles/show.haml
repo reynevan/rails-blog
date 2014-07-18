@@ -14,9 +14,12 @@
           = c.content
           %br
   %br
-  = form_for @comment do |f|
-    = f.label 'Skomentuj'
-    = f.text_area(:content, size: '90x10' )
-    %br
-    = f.hidden_field :article_id, :value=>@article.id
-    = f.submit
+  -if user_signed_in?
+    = form_for @comment do |f|
+      = f.label 'Skomentuj'
+      = f.text_area(:content, size: '90x10' )
+      %br
+      = f.hidden_field :article_id, :value=>@article.id
+      = f.submit
+  -else
+    Zaloguj sie, zeby skomentowac
