@@ -1,0 +1,21 @@
+
+.article_show
+  = render @article
+  .comments
+    -if @comments.count == 0
+      Brak komentarzy
+    -else
+      Komentarze:
+      - @comments.each do |c|
+        .comment
+          =c.user.email 
+          \: 
+          = c.content
+          %br
+  = form_for @comment do |f|
+    = f.label 'Skomentuj'
+    %br/
+    = f.text_area(:content, size: '50x10' )
+    %br/
+    = f.hidden_field :article_id, :value=>@article.id
+    = f.submit
