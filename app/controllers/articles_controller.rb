@@ -2,9 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :updates]
   before_action :is_mine?, only: [:edit, :update]
   def new
-    if @article.nil?
-      @article = Article.new
-    end
+    @article = Article.new
   end
 
   def create
@@ -12,7 +10,8 @@ class ArticlesController < ApplicationController
     if @article.save
   	  redirect_to articles_path, notice: 'Post dodany'
   	else
-  	  render 'new', alert: 'Blad przy dodawaniu posta'
+      flash[:alert] =  'Blad przy dodawaniu posta'
+  	  render 'new'
   	end
   end
 
@@ -44,6 +43,7 @@ class ArticlesController < ApplicationController
   	if @article.update(article_params)
   		redirect_to articles_path, notice: 'Zmieniono post'
   	else
+      flash[:alert] = 'Blad przy uaktualnianiu posta'
       render 'edit'
   	end
   end

@@ -1,7 +1,8 @@
 .article
   .article_title=link_to article.title, article_path(article.id)
   .article_content=article.content
-  =article.user.email[0..(article.user.email.index('@')-1)]
+  Author:
+  =article.user.email
   %br
   -if user_signed_in?
     -if current_user.id == article.user.id
