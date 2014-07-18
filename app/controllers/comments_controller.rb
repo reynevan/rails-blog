@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :authenticate_user!, only: [ :create]
   def create
   	@comment = Comment.new(comment_params.merge(:user_id=>current_user.id.to_i))
   	if @comment.save
