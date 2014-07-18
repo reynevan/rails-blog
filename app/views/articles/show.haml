@@ -12,10 +12,10 @@
           \: 
           = c.content
           %br
+  %br
   = form_for @comment do |f|
     = f.label 'Skomentuj'
-    %br/
     = f.text_area(:content, size: '90x10' )
-    %br/
+    %br
     = f.hidden_field :article_id, :value=>@article.id
     = f.submit
