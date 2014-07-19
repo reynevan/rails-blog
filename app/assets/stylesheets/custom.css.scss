@@ -21,6 +21,10 @@ body {
 	a{
 	color: #09c;
 	}
+	a:hover {
+	text-decoration: none;
+	color: #555;
+	}
 }
 .container {
 	margin-top: 150px;

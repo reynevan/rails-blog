@@ -9,7 +9,7 @@
   %body
     .menu
       #logo
-        %h2 Reynevan-blog
+        %h2=link_to 'Reynevan-blog', articles_path
       = link_to 'Main', articles_path
       -if user_signed_in? 
         | 

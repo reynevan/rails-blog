@@ -6,9 +6,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params.merge(:user_id=>current_user.id.to_i))
+    @article = Article.new(article_params.merge(:user_id=>current_user.id.to_i))
     if @article.save
-  	  redirect_to articles_path, notice: 'Post dodany'
+  	  redirect_to @article, notice: 'Post dodany'
   	else
       flash[:alert] =  'Blad przy dodawaniu posta'
   	  render 'new'

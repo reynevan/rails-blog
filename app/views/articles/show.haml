@@ -1,7 +1,7 @@
 
 .article_show
   = render @article
-  .comments
+  #comments
     -if @comments.count == 0
       No comments
     -else
@@ -10,7 +10,7 @@
         
   %br
   -if user_signed_in?
-    = form_for @comment, class: 'form-horizontal', remote: true do |f|
+    = form_for( @comment, class: 'form-horizontal', remote: true) do |f|
       .form-group
         = f.label 'Leave a comment:', class: 'col-sm-2 control-label'
         .col-sm-10
